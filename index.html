@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resolution Detection</title>
+</head>
+<body>
+    <h1>Resolution Detection</h1>
+    <p id="screenResolution">Screen Resolution: </p>
+    <p id="windowInnerSize">Window Inner Size: </p>
+    <p id="windowOuterSize">Window Outer Size: </p>
+    <p id="documentElementClientSize">Document Element Client Size: </p>
+
+    <script>
+        function displayResolutions() {
+            // Screen resolution
+            document.getElementById('screenResolution').textContent = 
+                "Screen Resolution: " + screen.width + " x " + screen.height + " pixels";
+
+            // Window inner size (viewport size excluding scrollbars)
+            document.getElementById('windowInnerSize').textContent = 
+                "Window Inner Size: " + window.innerWidth + " x " + window.innerHeight + " pixels";
+
+            // Window outer size (includes browser interface like address bar and tab bar)
+            document.getElementById('windowOuterSize').textContent = 
+                "Window Outer Size: " + window.outerWidth + " x " + window.outerHeight + " pixels";
+
+            // Document element client size (viewport size excluding scrollbars, similar to window.inner* but for <html> element)
+            document.getElementById('documentElementClientSize').textContent = 
+                "Document Element Client Size: " + document.documentElement.clientWidth + " x " + document.documentElement.clientHeight + " pixels";
+        }
+
+        // Call displayResolutions function when page loads
+        displayResolutions();
+    </script>
+</body>
+</html>
