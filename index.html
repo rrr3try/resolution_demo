@@ -3,39 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resolution Detection</title>
+    <title>Screen Resolution Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .method {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Resolution Detection</h1>
-    <p id="screenResolution">Screen Resolution: </p>
-    <p id="windowInnerSize">Window Inner Size: </p>
-    <p id="windowOuterSize">Window Outer Size: </p>
-    <p id="documentElementClientSize">Document Element Client Size: </p>
-    <p id="pixelRatio">Pixel ratio: </p>
+    <h1>Screen Resolution Details</h1>
+
+    <div class="method" id="screenResolution">
+        <h2>Screen Resolution</h2>
+        <p></p>
+    </div>
+    <div class="method" id="windowInnerSize">
+        <h2>Window Inner Size</h2>
+        <p></p>
+    </div>
+    <div class="method" id="realDeviceResolution">
+        <h2>Real Device Resolution (Considering devicePixelRatio)</h2>
+        <p></p>
+    </div>
+
     <script>
-        function displayResolutions() {
-            // Screen resolution
-            document.getElementById('screenResolution').textContent = 
-                "Screen Resolution: " + screen.width + " x " + screen.height + " pixels";
-
-            // Window inner size (viewport size excluding scrollbars)
-            document.getElementById('windowInnerSize').textContent = 
-                "Window Inner Size: " + window.innerWidth + " x " + window.innerHeight + " pixels";
-
-            // Window outer size (includes browser interface like address bar and tab bar)
-            document.getElementById('windowOuterSize').textContent = 
-                "Window Outer Size: " + window.outerWidth + " x " + window.outerHeight + " pixels";
-
-            // Document element client size (viewport size excluding scrollbars, similar to window.inner* but for <html> element)
-            document.getElementById('documentElementClientSize').textContent = 
-                "Document Element Client Size: " + document.documentElement.clientWidth + " x " + document.documentElement.clientHeight + " pixels";
-            
-            document.getElementById('pixelRatio').textContent = 
-                "Pixel ratio: " + (document.devicePixelRatio || 1);
+        function displayScreenResolution() {
+            const screenResolution = `Screen resolution: ${screen.width} x ${screen.height} pixels`;
+            document.getElementById('screenResolution').querySelector('p').textContent = screenResolution;
         }
 
-        // Call displayResolutions function when page loads
-        displayResolutions();
+        function displayWindowInnerSize() {
+            const windowInnerSize = `Window inner size: ${window.innerWidth} x ${window.innerHeight} pixels`;
+            document.getElementById('windowInnerSize').querySelector('p').textContent = windowInnerSize;
+        }
+
+        function displayRealDeviceResolution() {
+            const realWidth = screen.width * window.devicePixelRatio;
+            const realHeight = screen.height * window.devicePixelRatio;
+            const realDeviceResolution = `Real device resolution: ${realWidth} x ${realHeight} pixels (devicePixelRatio: ${window.devicePixelRatio})`;
+            document.getElementById('realDeviceResolution').querySelector('p').textContent = realDeviceResolution;
+        }
+
+        displayScreenResolution();
+        displayWindowInnerSize();
+        displayRealDeviceResolution();
     </script>
 </body>
 </html>
