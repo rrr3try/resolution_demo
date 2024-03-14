@@ -11,7 +11,7 @@
     <p id="windowInnerSize">Window Inner Size: </p>
     <p id="windowOuterSize">Window Outer Size: </p>
     <p id="documentElementClientSize">Document Element Client Size: </p>
-
+    <p id="pixelRatio">Pixel ratio: </p>
     <script>
         function displayResolutions() {
             // Screen resolution
@@ -29,6 +29,9 @@
             // Document element client size (viewport size excluding scrollbars, similar to window.inner* but for <html> element)
             document.getElementById('documentElementClientSize').textContent = 
                 "Document Element Client Size: " + document.documentElement.clientWidth + " x " + document.documentElement.clientHeight + " pixels";
+            
+            document.getElementById('pixelRatio').textContent = 
+                "Pixel ratio: " + (document.devicePixelRatio || 1);
         }
 
         // Call displayResolutions function when page loads
